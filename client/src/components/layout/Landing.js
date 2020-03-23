@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 class Landing extends Component {
   render() {
     return (
-      <div style={{ paddingTop: "10%"}} className="container valign-wrapper">
+      <div style={{ paddingTop: "25%"}} className="container valign-wrapper">
         <div className="row">
           <div className="col s12 center-align">
             <h4>
