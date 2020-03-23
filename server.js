@@ -42,13 +42,16 @@ mongoose
 app.use(passport.initialize());
 
 
-
 // Passport config
 require("./config/passport")(passport);
 
 // Routes
-app.use("/api/users", users);
-app.use("/api/issues", issues);
+
+const User = db.model('User', users);
+const Issue = db.model('Issue', issues);
+
+app.use("/api/users", User);
+app.use("/api/issues", Issue);
 
 const port = process.env.PORT || 5000;
 
