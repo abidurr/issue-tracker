@@ -53,7 +53,7 @@ const Issue = db.model('Issue', issues);
 app.use("/api/users", User);
 app.use("/api/issues", Issue);
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 
 app.listen(port, () => console.log(`Server up and running on port ${port}`));
 
