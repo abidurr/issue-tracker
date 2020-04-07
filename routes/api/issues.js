@@ -4,25 +4,15 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const issueRoutes = express.Router();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 
 let Issue = require("../../models/Issue");
 
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect( process.env.MONGODB_URI ||
-  "mongodb+srv://admin:iKLF17JTfEQrvOa1@cluster0-6oqrf.mongodb.net/test?retryWrites=true&w=majority",
-  { useNewUrlParser: true }
-);
 
-const connection = mongoose.connection;
-
-connection.once("open", function() {
-  console.log("MongoDB issues database connection established successfully");
-});
-
-issueRoutes.route("/").get(function(req, res) {
+issueRoutes.route("/dashboard").get(function(req, res) {
   Issue.find(function(err, issues) {
     if (err) {
       console.log(err);
@@ -78,6 +68,6 @@ issueRoutes.route("/add").post(function(req, res) {
     });
 });
 
-app.use("/", issueRoutes);
+app.use("/dashboard", issueRoutes);
 
 module.exports = issueRoutes;
