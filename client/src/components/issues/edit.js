@@ -133,7 +133,7 @@ export default class EditIssue extends Component {
     console.log(obj);
     axios
       .post(
-        "http://issues/update/" + this.props.match.params.id,
+        "/issues/update/" + this.props.match.params.id,
         obj
       )
       .then(res => console.log(res.data));
