@@ -11,7 +11,7 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      errors: {}
+      errors: {},
     };
   }
 
@@ -29,21 +29,21 @@ class Login extends Component {
 
     if (nextProps.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: nextProps.errors,
       });
     }
   }
 
-  onChange = e => {
+  onChange = (e) => {
     this.setState({ [e.target.id]: e.target.value });
   };
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
 
     const userData = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
     };
 
     this.props.loginUser(userData); // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
@@ -54,68 +54,61 @@ class Login extends Component {
 
     return (
       <div className="container">
-        <div style={{ marginTop: "10rem" }} className="row">
+        <div className="row">
           <div className="col s8 offset-s2">
             <Link to="/" className="btn-flat waves-effect">
               <i>Back to home</i>
             </Link>
             <p>{"   "}</p>
-            <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-              <h4>
-                <b>Login</b> below
-              </h4>
+            <div className="col s12">
+              <h3>
+                Login below
+              </h3>
               <p className="grey-text text-darken-1">
                 Don't have an account? <Link to="/register">Register</Link>
               </p>
             </div>
             <form noValidate onSubmit={this.onSubmit}>
               <div className="input-field col s12">
+                <label htmlFor="email">Email:</label>
+                {"   "}
+                <span className="red-text">
+                  {errors.email}
+                  {errors.emailnotfound}
+                </span>
+                <br />
                 <input
-                  style={{margin:"10px", padding: "5px", borderRadius: "3px"}}
-                  placeholder="E-mail"
+                  placeholder="Email"
                   onChange={this.onChange}
                   value={this.state.email}
                   error={errors.email}
                   id="email"
                   type="email"
-                  className={classnames("", {
-                    invalid: errors.email || errors.emailnotfound
-                  })}
+                  className="home-input-box"
                 />
-                <label htmlFor="email"></label>
-                <span className="red-text">
-                  {errors.email}
-                  {errors.emailnotfound}
-                </span>
+                <br />
               </div>
               <div className="input-field col s12">
+                <label htmlFor="password">Password:</label>
+                {"   "}
+                <span className="red-text">
+                  {errors.password}
+                  {errors.passwordincorrect}
+                </span>
+                <br />
                 <input
-                  style={{margin:"10px", padding: "5px", borderRadius: "3px"}}
                   placeholder="Password"
                   onChange={this.onChange}
                   value={this.state.password}
                   error={errors.password}
                   id="password"
                   type="password"
-                  className={classnames("", {
-                    invalid: errors.password || errors.passwordincorrect
-                  })}
+                  className="home-input-box"
                 />
-                <label htmlFor="password"></label>
-                <span className="red-text">
-                  {errors.password}
-                  {errors.passwordincorrect}
-                </span>
+                <br />
               </div>
-              <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+              <div className="col s12">
                 <button
-                  style={{
-                    backgroundColor: "lime",
-                    width: "150px",
-                    borderRadius: "3px",
-                    letterSpacing: "1.5px",
-                    margin: "1rem"
-                  }}
                   type="submit"
                   className="btn btn-large waves-effect waves-light hoverable lightgreen accent-5"
                 >
@@ -133,12 +126,12 @@ class Login extends Component {
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors,
 });
 
 export default connect(mapStateToProps, { loginUser })(Login);
