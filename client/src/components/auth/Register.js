@@ -52,7 +52,7 @@ class Register extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="container" style={{ marginTop: "10rem" }}>
+      <div className="container-home" style={{ marginTop: "10rem" }}>
         <div className="row">
           <div className="col s8 offset-s2">
             <Link to="/" className="btn-flat waves-effect">
