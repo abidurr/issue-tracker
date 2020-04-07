@@ -19,7 +19,7 @@ class Dashboard extends Component {
     return (
 
         <Router>
-        <div className="containr">
+        <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <Link to="/" className="navbar-brand">Issue Tracker</Link>
             
@@ -37,6 +37,7 @@ class Dashboard extends Component {
               </ul>
               <button
               style={{
+
                 borderRadius: "3px",
                 marginTop: "0"
               }}
