@@ -4882,6 +4882,8 @@ button.close {
   outline: 0;
 }
 
+/* my edits */
+
 .completed {
   text-decoration: line-through;
 }
