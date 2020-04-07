@@ -112,7 +112,7 @@ export default class CreateIssue extends Component {
     };
 
     axios
-      .post("http://localhost:5000/issues/add", newIssue)
+      .post("/issues/add", newIssue)
       .then(res => console.log(res.data));
 
     this.setState({

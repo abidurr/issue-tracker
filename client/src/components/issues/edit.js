@@ -38,7 +38,7 @@ export default class EditIssue extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/issues/" + this.props.match.params.id)
+      .get("/issues/" + this.props.match.params.id)
       .then(response => {
         this.setState({
           issue_title: response.data.issue_title,
@@ -133,7 +133,7 @@ export default class EditIssue extends Component {
     console.log(obj);
     axios
       .post(
-        "http://localhost:5000/issues/update/" + this.props.match.params.id,
+        "http://issues/update/" + this.props.match.params.id,
         obj
       )
       .then(res => console.log(res.data));
